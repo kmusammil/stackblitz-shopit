@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb+srv://muzammilalparamb:3390@cluster0.0lv2m.mongodb.net/neodb?retryWrites=true&w=majority&appName=Cluster0'
+const mongoURI = "mongodb+srv://muzammil:alparamb@shopit.xwq6a.mongodb.net/?retryWrites=true&w=majority&appName=shopit"
 
 const connectDB = async () => {
   try {
@@ -11,8 +11,5 @@ const connectDB = async () => {
     process.exit(1); // Exit process with failure
   }
 };
-
-module.exports = connectDB;
-
 
 module.exports = connectDB;
