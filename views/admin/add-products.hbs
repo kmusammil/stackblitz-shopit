@@ -12,10 +12,10 @@
                 <input 
                     type="text" 
                     id="product-name" 
-                    name="product-name" 
+                    name="name" 
                     class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
                     placeholder="Enter product name" 
-                    >
+                    required>
             </div>
 
             <!-- Category -->
@@ -26,10 +26,10 @@
                 <input 
                     type="text" 
                     id="category" 
-                    namwe="category" 
+                    name="category" 
                     class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
                     placeholder="Enter product category" 
-                    >
+                    required>
             </div>
 
             <!-- Price -->
@@ -43,8 +43,22 @@
                     name="price" 
                     class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
                     placeholder="Enter price" 
-                    >
+                    required>
             </div>
+
+            <!-- Description -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="description">
+                    Description
+                </label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    placeholder="Enter product description" 
+                    required></textarea>
+            </div>
+
 
             <!-- Stock -->
             <div class="mb-4">
@@ -55,11 +69,12 @@
                     id="stock" 
                     name="stock" 
                     class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                    >
+                    required>
                     <option value="In Stock">In Stock</option>
                     <option value="Out of Stock">Out of Stock</option>
                 </select>
             </div>
+
 
             <!-- Image Upload -->
             <div class="mb-4">
@@ -69,9 +84,9 @@
                 <input 
                     type="file" 
                     id="product-image" 
-                    name="product-image" 
+                    name="imageUrl" 
                     class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                    >
+                    required>
             </div>
 
             <!-- Submit Button -->

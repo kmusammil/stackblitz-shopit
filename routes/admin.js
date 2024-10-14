@@ -23,10 +23,22 @@ router.get('/', function (req, res) {
 router.get('/add-product', function (req, res) {
   res.render('admin/add-products');
 });
-router.post('/add-product', upload.single('product-image'), async function (req, res) {
-  savedProducts = await productHelper.addProduct(req.body, req.file.path);
-  res.redirect('/admin/view-products-table');
+router.post('/add-product', upload.single('imageUrl'), async function (req, res) {
+  try {
+      console.log(req.file.path); // Log the uploaded file path
+      // Ensure that req.file and req.body are defined
+      if (!req.file) {
+          return res.status(400).send('No file uploaded');
+      }
+      
+      const savedProduct = await productHelper.addProduct(req.body, req.file.path);
+      res.redirect('/admin/view-products-table');
+  } catch (error) {
+      console.error('Error while adding product:', error);
+      res.status(500).send('Internal Server Error');
+  }
 });
+
 
 
 
