@@ -1,18 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+var productHelper = require('../helpers/product-helpers')
 
-// Set up multer storage and file handling
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Ensure this folder exists in your project root
+      cb(null, 'uploads/'); // Directory where the files will be stored
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Rename the file with a timestamp to avoid conflicts
+      cb(null, Date.now() + '-' + file.originalname); // File name with timestamp
   }
 });
 
 var upload = multer({ storage: storage });
+
 
 // Middleware to parse form data (for non-file inputs)
 router.use(express.urlencoded({ extended: true }));
@@ -22,9 +23,9 @@ router.get('/', function (req, res) {
 router.get('/add-product', function (req, res) {
   res.render('admin/add-products');
 });
-router.post('/add-product', function (req, res) {
-  console.log(req.body);
-  console.log(req.files)
+router.post('/add-product', upload.single('product-image'), function (req, res) {
+  productHelper.addProduct(req.body, req.file.path)
 });
+
 
 module.exports = router;
