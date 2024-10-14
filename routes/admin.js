@@ -23,9 +23,11 @@ router.get('/', function (req, res) {
 router.get('/add-product', function (req, res) {
   res.render('admin/add-products');
 });
-router.post('/add-product', upload.single('product-image'), function (req, res) {
-  productHelper.addProduct(req.body, req.file.path)
+router.post('/add-product', upload.single('product-image'), async function (req, res) {
+  savedProducts = await productHelper.addProduct(req.body, req.file.path);
+  res.redirect('/admin/view-products-table');
 });
+
 
 
 module.exports = router;
