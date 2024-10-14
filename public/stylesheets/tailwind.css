@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+    @apply text-gray-700 hover:text-green-600 font-medium transition duration-300;
+}
+
+.btn-signin {
+    @apply bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300;
+}
+
+@media (min-width: 640px) {
+    .nav-link {
+        @apply text-lg;
+    }
+    .btn-signin {
+        @apply text-lg;
+    }
+}

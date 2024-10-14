@@ -1,0 +1,87 @@
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Add Product</h2>
+
+    <!-- Centered and Reduced Width Form -->
+    <div class="max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden p-6">
+        <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+            <!-- Product Name -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="product-name">
+                    Product Name
+                </label>
+                <input 
+                    type="text" 
+                    id="product-name" 
+                    name="product-name" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    placeholder="Enter product name" 
+                    >
+            </div>
+
+            <!-- Category -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="category">
+                    Category
+                </label>
+                <input 
+                    type="text" 
+                    id="category" 
+                    namwe="category" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    placeholder="Enter product category" 
+                    >
+            </div>
+
+            <!-- Price -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="price">
+                    Price
+                </label>
+                <input 
+                    type="number" 
+                    id="price" 
+                    name="price" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    placeholder="Enter price" 
+                    >
+            </div>
+
+            <!-- Stock -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="stock">
+                    Stock Status
+                </label>
+                <select 
+                    id="stock" 
+                    name="stock" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    >
+                    <option value="In Stock">In Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="product-image">
+                    Product Image
+                </label>
+                <input 
+                    type="file" 
+                    id="product-image" 
+                    name="product-image" 
+                    class="w-full bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                    >
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end">
+                <button
+                    type="submit"
+                    class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">
+                    Add Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

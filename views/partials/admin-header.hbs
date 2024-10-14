@@ -1,0 +1,73 @@
+<header class="bg-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="/images/shopit-logo.png" alt="ShopIt Logo" class="h-10" />
+            <span class="text-2xl font-bold text-green-600 ml-2">Admin Panel</span>
+        </div>
+
+        <!-- Navbar (hidden on mobile) -->
+        <nav class="hidden md:flex space-x-6">
+            <a href="#all-products" class="flex items-center text-gray-700 hover:text-green-600 font-medium transition duration-300">
+                <i class="fas fa-box-open mr-2"></i> <!-- Products Icon -->
+                All Products
+            </a>
+            <a href="#all-orders" class="flex items-center text-gray-700 hover:text-green-600 font-medium transition duration-300">
+                <i class="fas fa-receipt mr-2"></i> <!-- Orders Icon -->
+                All Orders
+            </a>
+            <a href="#all-users" class="flex items-center text-gray-700 hover:text-green-600 font-medium transition duration-300">
+                <i class="fas fa-users mr-2"></i> <!-- Users Icon -->
+                All Users
+            </a>
+        </nav>
+
+        <!-- Sign Out Button (desktop) -->
+        <div class="hidden md:flex space-x-4 items-center">
+            <a href="#signout" class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
+              <i class="fas fa-user mr-2"></i>
+              Sign In
+              </a>
+            <a href="#signout" class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
+              <i class="fas fa-user mr-2"></i>
+              Sign Up
+              </a>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden">
+            <button id="hamburger" class="focus:outline-none text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden initially) -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg py-4">
+        <nav class="flex flex-col space-y-4 px-6">
+            <a href="#all-products" class="flex items-center text-gray-700 hover:text-green-600 text-lg font-medium transition duration-300">
+                <i class="fas fa-box-open mr-2"></i> <!-- Products Icon -->
+                All Products
+            </a>
+            <a href="#all-orders" class="flex items-center text-gray-700 hover:text-green-600 text-lg font-medium transition duration-300">
+                <i class="fas fa-receipt mr-2"></i> <!-- Orders Icon -->
+                All Orders
+            </a>
+            <a href="#all-users" class="flex items-center text-gray-700 hover:text-green-600 text-lg font-medium transition duration-300">
+                <i class="fas fa-users mr-2"></i> 
+                <!-- Users Icon -->
+                All Users
+            </a>
+            <div class="flex justify-evenly">
+                <a href="#signout" class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 text-center">
+                <i class="fas fa-user mr-2"></i>
+                Sign In
+                </a>
+                <a href="#signout" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 text-center">
+                <i class="fas fa-user mr-2"></i>
+                Sign Up
+                </a>
+             </nav>
+        </nav>
+    </div>
+</header>
