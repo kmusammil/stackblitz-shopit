@@ -17,27 +17,23 @@ var upload = multer({ storage: storage });
 
 // Middleware to parse form data (for non-file inputs)
 router.use(express.urlencoded({ extended: true }));
-router.get('/', function (req, res) {
-  res.render('admin/view-products-table', { admin: true });
+router.get('/', async function (req, res) {
+  const allProducts = await productHelper.getAllProducts(); 
+  res.render('admin/view-products-table', { admin: true , allProducts});
 });
 router.get('/add-product', function (req, res) {
   res.render('admin/add-products');
 });
-router.post('/add-product', upload.single('imageUrl'), async function (req, res) {
-  try {
-      console.log(req.file.path); // Log the uploaded file path
-      // Ensure that req.file and req.body are defined
-      if (!req.file) {
-          return res.status(400).send('No file uploaded');
-      }
-      
-      const savedProduct = await productHelper.addProduct(req.body, req.file.path);
-      res.redirect('/admin/view-products-table');
-  } catch (error) {
-      console.error('Error while adding product:', error);
-      res.status(500).send('Internal Server Error');
-  }
-});
+
+router.get('/delete/:id', async (req, res)=>{
+  productId = req.params.id;
+  await productHelper.deleteProduct(productId)
+  res.redirect('/admin')
+})
+
+
+
+
 
 
 

@@ -20,5 +20,20 @@ module.exports = {
 
         const savedProducts = await newProduct.save();
         return savedProducts;
+    },
+    getAllProducts: () => {
+        return new Promise((resolve, reject) => {
+            Product.find().lean()
+                .then(allProducts => {
+                    resolve(allProducts); // Resolve the promise with the fetched products
+                })
+                .catch(err => {
+                    reject(err); // Reject the promise with the error
+                });
+        });
+    },
+    deleteProduct:(ProductId)=>{
+        return Product.deleteOne({_id:ProductId})
     }
+    
 };

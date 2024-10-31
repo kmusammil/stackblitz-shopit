@@ -21,66 +21,27 @@
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
-                <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-300">
-                    <td class="py-3 px-6 flex items-center mt-3">
-                        <i class="fas fa-box-open mr-2"></i> <!-- Product Icon -->
-                        Product A
-                    </td>
-                    <td class="py-3 px-6">Category 1</td>
-                    <td class="py-3 px-6">$29.99</td>
-                    <td class="py-3 px-6">In Stock</td>
-                    <td class="py-3 px-6 w-16 h-16"> <!-- Adjust image size for responsiveness -->
-                        <img src='/images/shopit-logo.png' class="object-contain w-full h-full">
-                    </td>
-                    <td class="py-3 px-6 text-center">
-                        <a href="#edit" class="text-blue-600 hover:text-blue-800 transition duration-300 mr-2">
-                            <i class="fas fa-edit"></i> <!-- Edit Icon -->
-                        </a>
-                        <a href="#delete" class="text-red-600 hover:text-red-800 transition duration-300">
-                            <i class="fas fa-trash-alt"></i> <!-- Delete Icon -->
-                        </a>
-                    </td>
-                </tr>
-                <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-300">
-                    <td class="py-3 px-6 flex items-center mt-3">
-                        <i class="fas fa-box-open mr-2"></i> <!-- Product Icon -->
-                        Product A
-                    </td>
-                    <td class="py-3 px-6">Category 1</td>
-                    <td class="py-3 px-6">$29.99</td>
-                    <td class="py-3 px-6">In Stock</td>
-                    <td class="py-3 px-6 w-16 h-16"> <!-- Adjust image size for responsiveness -->
-                        <img src='/images/shopit-logo.png' class="object-contain w-full h-full">
-                    </td>
-                    <td class="py-3 px-6 text-center">
-                        <a href="#edit" class="text-blue-600 hover:text-blue-800 transition duration-300 mr-2">
-                            <i class="fas fa-edit"></i> <!-- Edit Icon -->
-                        </a>
-                        <a href="#delete" class="text-red-600 hover:text-red-800 transition duration-300">
-                            <i class="fas fa-trash-alt"></i> <!-- Delete Icon -->
-                        </a>
-                    </td>
-                </tr>
-                <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-300">
-                    <td class="py-3 px-6 flex items-center mt-3">
-                        <i class="fas fa-box-open mr-2"></i> <!-- Product Icon -->
-                        Product A
-                    </td>
-                    <td class="py-3 px-6">Category 1</td>
-                    <td class="py-3 px-6">$29.99</td>
-                    <td class="py-3 px-6">In Stock</td>
-                    <td class="py-3 px-6 w-16 h-16"> <!-- Adjust image size for responsiveness -->
-                        <img src='/images/shopit-logo.png' class="object-contain w-full h-full">
-                    </td>
-                    <td class="py-3 px-6 text-center">
-                        <a href="#edit" class="text-blue-600 hover:text-blue-800 transition duration-300 mr-2">
-                            <i class="fas fa-edit"></i> <!-- Edit Icon -->
-                        </a>
-                        <a href="#delete" class="text-red-600 hover:text-red-800 transition duration-300">
-                            <i class="fas fa-trash-alt"></i> <!-- Delete Icon -->
-                        </a>
-                    </td>
-                </tr>
+                {{#each allProducts}}
+                    <tr class="border-b border-gray-200 hover:bg-gray-100 transition duration-300">
+                        <td class="py-3 px-6 flex items-center mt-3">
+                            <i class="fas fa-box-open mr-2"></i> <!-- Product Icon -->
+                            {{name}}                    </td>
+                        <td class="py-3 px-6">{{category}}</td>
+                        <td class="py-3 px-6">${{price}}</td>
+                        <td class="py-3 px-6">{{stock}}</td>
+                        <td class="py-3 px-6 w-16 h-16"> <!-- Adjust image size for responsiveness -->
+                            <img src='/images/shopit-logo.png' class="object-contain w-full h-full">
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                            <a href="#edit" class="text-blue-600 hover:text-blue-800 transition duration-300 mr-2">
+                                <i class="fas fa-edit"></i> <!-- Edit Icon -->
+                            </a>
+                            <a href="/admin/delete/{{this._id}}" class="text-red-600 hover:text-red-800 transition duration-300">
+                                <i class="fas fa-trash-alt"></i> <!-- Delete Icon -->
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

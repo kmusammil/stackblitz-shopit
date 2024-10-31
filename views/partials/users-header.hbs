@@ -1,10 +1,13 @@
 <header class="bg-white shadow-md">
     <div class="container mx-auto flex justify-between items-center px-6 py-4">
         <!-- Logo -->
-        <div class="flex items-center">
-            <img src="/images/shopit-logo.png" alt="ShopIt Logo" class="h-10" />
-            <span class="text-2xl font-bold text-green-600 ml-2">ShopIt</span>
-        </div>
+        <a href="/">
+            <div class="flex items-center">
+                <img src="/images/shopit-logo.png" alt="ShopIt Logo" class="h-10" />
+                <span class="text-2xl font-bold text-green-600 ml-2">ShopIt</span>
+            </div>
+        </a>
+        
 
         <!-- Navbar (hidden on mobile) -->
         <nav class="hidden md:flex space-x-6">
@@ -31,6 +34,7 @@
         
         <!-- Sign In Button (desktop) -->
         <div class="hidden md:flex space-x-4 items-center">
+            <a href="/admin">Admin</a>
             <a href="" class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">
                  <i class="fas fa-user mr-2"></i>
                 Sign In

@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connectDB = require('./config/connection');
 const { engine } = require('express-handlebars');
+const Handlebars = require('handlebars');
+
+
 
 connectDB();
 
@@ -23,12 +26,24 @@ app.engine('hbs', engine({
 }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+Handlebars.registerHelper({
+  json: function(context) {
+    return JSON.stringify(context, null, 2);
+  },
+  eq: function(a, b) {
+    return a === b;
+  }
+});
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 app.use('/', usersRouter);
 app.use('/admin', adminRouter);
