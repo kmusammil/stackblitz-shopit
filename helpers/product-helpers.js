@@ -20,5 +20,45 @@ module.exports = {
 
         const savedProducts = await newProduct.save();
         return savedProducts;
+    },
+    getAllProducts: () => {
+        return new Promise((resolve, reject) => {
+            Product.find().lean()
+                .then(allProducts => {
+                    resolve(allProducts); // Resolve the promise with the fetched products
+                })
+                .catch(err => {
+                    reject(err); // Reject the promise with the error
+                });
+        });
+    },
+    deleteProduct:(productId)=>{
+        return Product.deleteOne({_id:productId})
+    },
+    getProductDetails: (productId) => {
+        return new Promise((resolve, reject) => {
+            Product.findOne({ _id: productId })
+                .then((productDetails) => {
+                    resolve(productDetails);
+                })
+                .catch((error) => {
+                    console.error("Error fetching product details:", error);
+                    reject(error);
+                });
+        });
+    },
+    editProduct: (productId, productDetails, imagePath) => {
+        // Destructure product details correctly
+        const { name, category, price, description, stock } = productDetails;
+    
+        // Return the result of findOneAndUpdate
+        return Product.findOneAndUpdate(
+            { _id: productId }, // Query to find the product by ID
+            { name, category, price, description, imageUrl:imagePath, stock }, // Fields to update
+            { new: true } // Return the updated product
+        );
     }
-};
+    
+    
+}
+

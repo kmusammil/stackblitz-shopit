@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const mongoURI = "mongodb+srv://muzammil:alparamb@shopit.xwq6a.mongodb.net/?retryWrites=true&w=majority&appName=shopit"
+// const mongoURI = "mongodb+srv://muzammil:alparamb@shopit.xwq6a.mongodb.net/?retryWrites=true&w=majority&appName=shopit"
+const mongoURI = "mongodb://localhost:27017/products"
 
 const connectDB = async () => {
   try {

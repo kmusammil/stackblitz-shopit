@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var connectDB = require('./config/connection');
 const { engine } = require('express-handlebars');
+const Handlebars = require('handlebars');
+
+
 
 connectDB();
 
@@ -19,16 +22,29 @@ app.engine('hbs', engine({
   defaultLayout: 'layout', // Use 'layout' for your layout.hbs file
   layoutsDir: path.join(__dirname, 'views'), // Point to the views directory since layouts are not in a subdirectory
   partialsDir: path.join(__dirname, 'views/partials'), // Point to your partials directory
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: {
+    json: function (context) {
+      return JSON.stringify(context, null, 2);
+    },
+    eq: function (a, b) {
+      return a === b;
+    }
+  }
 }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 app.use('/', usersRouter);
 app.use('/admin', adminRouter);
