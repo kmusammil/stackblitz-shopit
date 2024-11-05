@@ -1,10 +1,10 @@
-// models/Product.js
+
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true, // This field is required
+        required: true, 
     },
     description: {
         type: String,
@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        min: 0, // Minimum price cannot be negative
+        min: 0, 
     },
     category: {
         type: String,
@@ -21,17 +21,16 @@ const productSchema = new mongoose.Schema({
     },
     stock: {
         type: String,
-        enum: ['In Stock', 'Out of Stock'], // Allowed values for stock
-        required: true, // This field is required
+        enum: ['In Stock', 'Out of Stock'], 
+        required: true,
     },
     imageUrl: {
         type: String,
-        required: true, // Assuming every product has an image
+        required: true,
     },
 }, {
-    timestamps: true, // This will create createdAt and updatedAt fields
+    timestamps: true, 
 });
 
-// Create and export the Product model
 const Product = mongoose.model('Product', productSchema);
 module.exports = Product;

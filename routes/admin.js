@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var productHelper = require('../helpers/product-helpers')
+var productHelper = require('../helpers/product-helpers');
+const userHelper = require('../helpers/user-helpers');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -33,7 +34,7 @@ router.post('/add-product', upload.single('imageUrl'), async function (req, res)
     }
 
     const savedProduct = await productHelper.addProduct(req.body, req.file.path);
-    res.redirect('/admin');
+    res.redirect('/protected/admin');
   } catch (error) {
     console.error('Error while adding product:', error);
     res.status(500).send('Internal Server Error');
@@ -42,7 +43,7 @@ router.post('/add-product', upload.single('imageUrl'), async function (req, res)
 router.get('/delete/:id', async (req, res) => {
   productId = req.params.id;
   await productHelper.deleteProduct(productId)
-  res.redirect('/admin')
+  res.redirect('/protected/admin')
 })
 router.get('/edit/:id', async (req, res) => {
   productId = req.params.id;
@@ -52,15 +53,39 @@ router.get('/edit/:id', async (req, res) => {
   const productDetailsPlain = productDetails.toObject ? productDetails.toObject() : productDetails;
   res.render('admin/edit-product', { productDetails: productDetailsPlain });
 })
-router.post('/edit/:id', upload.single('imageUrl'), async (req, res) => {
+router.post('/edit/:id/:imagePath', upload.single('imageUrl'), async (req, res) => {
   const productId= req.params.id;
   const productDetails= req.body;
-  const imagePath= req.file.path;
+  let imagePath;
+  if (req.file){
+    imagePath= req.file.path;
+  } else{
+    imagePath = decodeURIComponent(req.params.imagePath); 
+  }
   await productHelper.editProduct(productId, productDetails, imagePath)
-  res.redirect('/admin')
+  res.redirect('/protected/admin')
 })
 
+router.get('/all-users', async (req, res)=>{
 
+  const allUsers = await userHelper.getAllUsers();
+
+  const transformedUsers = allUsers.map(user => ({ 
+    name: user.name, 
+    email: user.email, 
+    password: user.password
+   }));
+
+  const context = { users: transformedUsers };
+  res.render('admin/view-users', context);
+})
+
+router.get('/delete-user/:email', async (req, res) => {
+  const userEmail = req.params.email;
+  console.log('Email from URL:', userEmail); // Check the email being passed
+  await userHelper.deleteUser(userEmail);
+  res.redirect('/protected/admin/all-users');
+});
 
 
 module.exports = router;

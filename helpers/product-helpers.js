@@ -4,11 +4,6 @@ module.exports = {
     addProduct: async (productDetails, imagePath) => {
         const { name, description, price, category, stock } = productDetails;
 
-        // Validate required fields
-        if (!name || !description || !price || !category || !stock) {
-            throw new Error('All fields are required');
-        }
-
         const newProduct = new Product({
             name,
             description,
