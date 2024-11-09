@@ -1,3 +1,2 @@
-# stackblitz-shopit
-
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/kmusammil/stackblitz-shopit)
+ShopIt E-Commerce Website
+by Musammil K

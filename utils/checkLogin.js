@@ -7,12 +7,13 @@ const checkLogin = (req, res, next) => {
     const token = req.cookies.token; // Retrieve the token from cookies
 
     if (token) {
-        jwt.verify(token, JWT_SECRET, (err, user) => {
+        jwt.verify(token, JWT_SECRET, (err, decodedUser) => {
             if (err) {
                 req.session.redirectTo = req.originalUrl;
                 return res.redirect('/signin')
             }
-            res.locals.user = user;
+            req.user = decodedUser;
+            res.locals.user = decodedUser;
             next(); // Proceed to the next middleware or route handler
         });
     }else{

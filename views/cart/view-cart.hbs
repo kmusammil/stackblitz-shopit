@@ -1,1 +1,115 @@
-<h1>cart</h1>
+<div class="min-h-screen bg-gray-50">
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main cart content -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold">Shopping Cart</h1>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-gray-600">Items:</span>
+                            <span
+                                class="bg-yellow-400 px-3 py-1 rounded-full text-sm font-semibold">{{itemCount}}</span>
+                        </div>
+                    </div>
+                    {{#if cart.items.length}}
+                    {{#each cart.items}}
+                    <div class="border-b border-gray-100 py-6 last:border-0">
+                        <div class="flex items-start justify-between">
+                            <div class="flex space-x-4">
+                                <div class="w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
+                                    <img src="/{{this.productId.imageUrl}}" alt="{{this.productId.name}}"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800">{{this.productId.name}}</h3>
+                                    <p class="text-gray-500 mt-1">{{this.productId.description}}</p>
+                                    <div class="flex items-center mt-4 space-x-6">
+                                        <div class="flex items-center space-x-2">
+                                            <button
+                                                class="w-8 h-8 rounded bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M20 12H4"></path>
+                                                </svg>
+                                            </button>
+                                            <span class="text-lg font-medium w-8 text-center">{{this.quantity}}</span>
+                                            <button
+                                                class="w-8 h-8 rounded bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <button class="text-red-500 hover:text-red-600">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xl font-bold text-gray-800">${{this.productId.price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <div class="bg-white rounded-lg shadow-sm p-6 text-center">
+                        <h2 class="text-2xl font-bold text-gray-800">Your cart is empty</h2>
+                        <p class="text-gray-600 mt-2">
+                            Start shopping now to add items to your cart.
+                        </p>
+                        <a href="/"
+                            class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                            Shop Products
+                        </a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+
+            <!-- Cart summary sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+                    <h2 class="text-xl font-bold mb-6">Order Summary</h2>
+                    {{#with priceSummary}}
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span>${{subtotal}}</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Shipping</span>
+                            <span>${{shipping}}</span>
+                        </div>
+                        <div class="flex justify-between text-xl font-bold text-gray-800 pt-4 border-t">
+                            <span>Total</span>
+                            <span>${{total}}</span>
+                        </div>
+                    </div>
+                    {{/with}}
+
+                    <a href="/protected/checkout"
+                        class="w-full mt-6 bg-green-500 hover:bg-green-600 text-white py-4 rounded-lg text-lg font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <span>Checkout</span>
+                    </a>
+
+                    <p class="text-center text-gray-500 text-sm mt-4">
+                        Free shipping on orders over $50
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

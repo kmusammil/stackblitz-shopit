@@ -10,6 +10,8 @@ const Handlebars = require('handlebars');
 const authenticateToken = require('./utils/authenticateToken');
 const session = require('express-session');
 const checkLogin = require('./utils/checkLogin');
+const cartCount = require('./middlewares/cartCount');
+
 
 
 connectDB();
@@ -17,6 +19,7 @@ connectDB();
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var cartRouter = require('./routes/cart')
+var checkoutRouter = require('./routes/checkout')
 
 var app = express();
 
@@ -35,6 +38,10 @@ app.engine('hbs', engine({
     },
     encodeURIComponent: function (url) {
       return encodeURIComponent(url);
+    },
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
     }
   }
 }));
@@ -51,6 +58,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(checkLogin)
+app.use(cartCount)
 app.use(session({
   secret: 'your-session-secret',
   resave: false,
@@ -63,15 +71,16 @@ app.use('/protected', authenticateToken);
 app.use('/', usersRouter);
 app.use('/protected/admin', adminRouter);
 app.use('/protected/cart', cartRouter);
+app.use('/protected/checkout', checkoutRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

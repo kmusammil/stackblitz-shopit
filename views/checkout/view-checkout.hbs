@@ -1,0 +1,85 @@
+<div class="min-h-screen bg-gray-50 py-12">
+    <div class="container mx-auto px-4 max-w-5xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-bold text-gray-800">Checkout</h1>
+        </div>
+
+        <div class="form-sections space-y-6">
+            <!-- Personal Information Box -->
+            <div class="form-box bg-white rounded-xl shadow-sm p-8" data-step="1">
+                <div class="flex items-center space-x-4 cursor-pointer toggle-section" data-step="1">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-600 text-white font-semibold">1</div>
+                    <h2 class="text-xl font-semibold text-gray-800">Personal Information</h2>
+                </div>
+                <div class="form-content mt-6">
+                    <form class="space-y-4" id="personal-info-form">
+                        <div>
+                            <input type="text" id="full-name" placeholder="Full Name" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Email Address" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <div>
+                            <input type="tel" id="phone" placeholder="Phone Number" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <button type="button" class="submit-form bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-2 px-4 rounded-lg mt-4">Continue to Shipping</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Shipping Address Box -->
+            <div class="form-box bg-white rounded-xl shadow-sm p-8" data-step="2">
+                <div class="flex items-center space-x-4 cursor-pointer toggle-section" data-step="2">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-white font-semibold">2</div>
+                    <h2 class="text-xl font-semibold text-gray-800">Shipping Address</h2>
+                </div>
+                <div class="form-content mt-6">
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Street Address" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        <input type="text" placeholder="Apartment, suite, etc. (optional)" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="City" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                            <input type="text" placeholder="State/Province" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="Postal Code" class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                            <select class="border rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                                <option value="" disabled selected>Country/Region</option>
+                                <option value="us">United States</option>
+                                <option value="ca">Canada</option>
+                                <option value="uk">United Kingdom</option>
+                            </select>
+                        </div>
+                        <button type="button" class="submit-form bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-2 px-4 rounded-lg mt-4">Continue to Shipping Method</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Shipping Method Box -->
+            <div class="form-box bg-white rounded-xl shadow-sm p-8" data-step="3">
+                <div class="flex items-center space-x-4 cursor-pointer toggle-section" data-step="3">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-white font-semibold">3</div>
+                    <h2 class="text-xl font-semibold text-gray-800">Shipping Method</h2>
+                </div>
+                <div class="form-content mt-6">
+                    <form class="space-y-4">
+                        <div class="border rounded p-3">
+                            <label class="flex items-center space-x-3">
+                                <input type="radio" name="shipping" value="standard" class="form-radio focus:outline-none focus:ring-2 focus:ring-green-600">
+                                <span>Standard Shipping (5-7 days) - $5.00</span>
+                            </label>
+                        </div>
+                        <div class="border rounded p-3">
+                            <label class="flex items-center space-x-3">
+                                <input type="radio" name="shipping" value="express" class="form-radio focus:outline-none focus:ring-2 focus:ring-green-600">
+                                <span>Express Shipping (2-3 days) - $15.00</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg mt-4">Proceed to Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
